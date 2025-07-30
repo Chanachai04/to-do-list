@@ -91,7 +91,7 @@ const App = (): React.JSX.Element => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-900 font-sans flex flex-col items-center p-4 sm:p-8">
+    <div className="h-screen bg-gray-100 text-gray-900 font-sans flex flex-col items-center p-4 sm:p-8">
       <Modal
         isVisible={modal.isVisible}
         message={modal.message}
