@@ -101,6 +101,67 @@ const App = (): React.JSX.Element => {
         cancelText={modal.cancelText}
       />
 
+      {/* Navigation bar moved to top */}
+      <header className="w-full max-w-4xl flex justify-center mb-8 mt-4">
+        <nav className="flex space-x-4 bg-white p-3 rounded-full shadow-lg">
+          <button
+            onClick={() => {
+              setCurrentPage("taskList");
+              setEditingTask(null);
+            }}
+            className={`p-3 rounded-full transition-all duration-200 ease-in-out relative group ${
+              currentPage === "taskList" ? "bg-blue-600 text-white shadow-md" : "text-gray-700 hover:bg-gray-200"
+            }`}
+            title="รายการสิ่งที่ต้องทำ"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
+              />
+            </svg>
+          </button>
+
+          <button
+            onClick={() => {
+              setCurrentPage("addTask");
+              setEditingTask(null);
+            }}
+            className={`p-3 rounded-full transition-all duration-200 ease-in-out relative group ${
+              currentPage === "addTask" ? "bg-blue-600 text-white shadow-md" : "text-gray-700 hover:bg-gray-200"
+            }`}
+            title="เพิ่มกิจกรรม"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+          </button>
+
+          <button
+            onClick={() => {
+              setCurrentPage("completedTasks");
+              setEditingTask(null);
+            }}
+            className={`p-3 rounded-full transition-all duration-200 ease-in-out relative group ${
+              currentPage === "completedTasks" ? "bg-blue-600 text-white shadow-md" : "text-gray-700 hover:bg-gray-200"
+            }`}
+            title="กิจกรรมที่ทำสำเร็จ"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </button>
+        </nav>
+      </header>
+
+      {/* Main content */}
       <main className="w-full max-w-4xl flex-1">
         {currentPage === "taskList" && (
           <TaskList
@@ -126,75 +187,6 @@ const App = (): React.JSX.Element => {
         )}
         {currentPage === "completedTasks" && <CompletedTasks tasks={tasks} onDelete={deleteTask} />}
       </main>
-
-      {/* Navigation bar at bottom */}
-      <footer className="w-full max-w-4xl flex justify-center mt-8 mb-4">
-        <nav className="flex space-x-4 bg-white p-3 rounded-full shadow-lg">
-          <button
-            onClick={() => {
-              setCurrentPage("taskList");
-              setEditingTask(null);
-            }}
-            className={`p-3 rounded-full transition-all duration-200 ease-in-out relative group ${
-              currentPage === "taskList" ? "bg-blue-600 text-white shadow-md" : "text-gray-700 hover:bg-gray-200"
-            }`}
-            title="รายการสิ่งที่ต้องทำ"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
-              />
-            </svg>
-            <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
-              รายการสิ่งที่ต้องทำ
-            </span>
-          </button>
-
-          <button
-            onClick={() => {
-              setCurrentPage("addTask");
-              setEditingTask(null);
-            }}
-            className={`p-3 rounded-full transition-all duration-200 ease-in-out relative group ${
-              currentPage === "addTask" ? "bg-blue-600 text-white shadow-md" : "text-gray-700 hover:bg-gray-200"
-            }`}
-            title="เพิ่มกิจกรรม"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-            </svg>
-            <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
-              เพิ่มกิจกรรม
-            </span>
-          </button>
-
-          <button
-            onClick={() => {
-              setCurrentPage("completedTasks");
-              setEditingTask(null);
-            }}
-            className={`p-3 rounded-full transition-all duration-200 ease-in-out relative group ${
-              currentPage === "completedTasks" ? "bg-blue-600 text-white shadow-md" : "text-gray-700 hover:bg-gray-200"
-            }`}
-            title="กิจกรรมที่ทำสำเร็จ"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-            <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
-              กิจกรรมที่ทำสำเร็จ
-            </span>
-          </button>
-        </nav>
-      </footer>
 
       {/* Notification at bottom right */}
       <Notification isVisible={notification.isVisible} message={notification.message} type={notification.type} />
