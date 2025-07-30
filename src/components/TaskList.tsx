@@ -47,7 +47,7 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, onEdit, onMarkComplete, onDe
 
   return (
     <div className="container mx-auto p-4 max-w-4xl bg-white rounded-lg shadow-xl mt-8">
-      <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-6 md:mb-8">รายการสิ่งที่ต้องทำ</h2>
+      <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-6 md:mb-8">รายการทั้งหมด</h2>
 
       <div className="flex flex-col gap-3 md:gap-4 mb-6">
         <div className="w-full">
@@ -84,7 +84,7 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, onEdit, onMarkComplete, onDe
       </div>
 
       {filteredTasks.length === 0 ? (
-        <p className="text-center text-gray-500 text-lg">ไม่มีรายการสิ่งที่ต้องทำ</p>
+        <p className="text-center text-gray-500 text-lg">ไม่มีรายการที่ต้องทำ</p>
       ) : (
         <ul className="space-y-4">
           {filteredTasks.map((task) => (
