@@ -102,8 +102,8 @@ const App = (): React.JSX.Element => {
       />
 
       {/* Navigation bar moved to top */}
-      <header className="w-full max-w-4xl flex justify-center mb-8 mt-4">
-        <nav className="flex space-x-4 bg-white p-3 rounded-full shadow-lg">
+      <header className="w-full max-w-4xl flex justify-center">
+        <nav className="fixed bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-4 bg-white p-3 rounded-full shadow-lg">
           <button
             onClick={() => {
               setCurrentPage("taskList");
